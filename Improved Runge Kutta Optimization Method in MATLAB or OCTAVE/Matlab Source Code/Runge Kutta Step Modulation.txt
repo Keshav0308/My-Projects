@@ -1,0 +1,60 @@
+function yprime=yprime_at(x,y)
+yprime=exp(y)-y*exp(x);
+end
+
+function rkutta_modulated_4=RKM4(x,y,xn,i=1)
+
+x(1)=input('initial value of x : ');
+y(1)=input('initial value of y : ');
+xn=input('for what value of x you would like to estimate y : ');
+step=input('Initial Step Size : ');
+
+step_min = 0.001;
+
+dy_max = 0.01;  
+dy_min = 0.008; 
+y_tol = 0.001;
+
+while (x(i) < xn)    
+    k1 = yprime_at(x(i),y(i));
+    k2 = yprime_at(x(i)+step/2, y(i)+step*k1/2);
+    k3 = yprime_at(x(i)+step/2, y(i)+step*k2/2);
+    k4 = yprime_at(x(i)+step,   y(i)+step*k3);
+    step_norm = y(i) + (step*(k1+2*k2+2*k3+k4))/6;
+
+    k2 = yprime_at(x(i)+step/4, y(i)+step*k1/4);
+    k3 = yprime_at(x(i)+step/4, y(i)+step*k2/4);
+    k4 = yprime_at(x(i)+step/2, y(i)+step*k3/2);
+    step_half = y(i) + (step*(k1+2*k2+2*k3+k4))/12;
+
+    k2 = yprime_at(x(i)+step,   y(i)+step*k1);
+    k3 = yprime_at(x(i)+step,   y(i)+step*k2);
+    k4 = yprime_at(x(i)+2*step, y(i)+2*step*k3);
+    step_double = y(i) + (step*(k1+2*k2+2*k3+k4))/3;
+    i++;
+
+    if (abs(step_norm) < y_tol)
+        if (step != step_min)
+            step = step_min;
+	endif	
+        y(i) = step_norm;
+
+    else
+        if (abs(step_norm) > y_tol && abs(step_norm-step_half)/abs(step_norm) > dy_max)
+            step = step/2; 
+            y(i) = step_half;
+        else if (abs(step_norm) > y_tol && abs(step_norm-step_double)/abs(step_norm) < dy_min)
+            step = step*2;
+            y(i) = step_double;
+        else
+            y(i) = step_norm;
+	endif
+
+    endif
+    x(i)=x(i-1)+step;
+end
+end
+
+printf('The estimated value of function y =%f at x =%f',y(i),x(i));
+plot(x,y,'x-r');
+end

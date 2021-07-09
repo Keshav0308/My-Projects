@@ -1,0 +1,22 @@
+Circuit: * C:\Users\91880\Desktop\DTU\Programming\NGSPICE Netlists\Draft2.asc
+
+.OP point found by inspection.
+Heightened Def Con from 11.8707 to 11.8707
+
+Date: Thu Dec 03 15:41:00 2020
+Total elapsed time: 101.341 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 187916406
+traniter = 187916406
+tranpoints = 30189533
+accept = 22642202
+rejected = 7547332
+matrix size = 2
+fillins = 0
+solver = Normal
+Matrix Compiler1:       3 opcodes  0.0/[0.0]/0.0
+Matrix Compiler2:      10 opcodes  0.0/[0.0]/0.0
+

@@ -1,0 +1,40 @@
+function yprime=yprime_at(x,y)
+yprime=(2*x+1)/(2*y-1);
+end
+
+function rkutta_6=RK6(x,y,n,h,xn)
+
+x(1)=input('initial value of x : ');
+y(1)=input('initial value of y : ');
+n=input('number of iterations you will be performing : ');
+h=input('value of h : ');
+xn=input('for what value of x you would like to estimate y : ');
+
+gap=(xn-x(1))/n;
+
+for i=1:n
+
+k1=h*yprime_at(x(i),y(i));
+
+k2=h*yprime_at(x(i) +h/6, y(i) +k1/6);
+
+k3=h*yprime_at(x(i) +4*h/15, y(i) +4*k1/75 +16*k2/75);
+
+k4=h*yprime_at(x(i) +2*h/3, y(i) +5*k1/6 -8*k2/3 +5*k3/2);
+
+k5=h*yprime_at(x(i) +5*h/6, y(i) -165*k1/64 +55*k2/6 -425*k3/64 +85*k4/96);
+
+k6=h*yprime_at(x(i) +h, y(i) +12*k1/5 -8*k2 +4015*k3/612 -11*k4/36 +88*k5/255);
+
+k7=h*yprime_at(x(i) +h/15, y(i) -8263*k1/15000 +124*k2/75 -643*k3/680 -81*k4/250 +2484*k5/10625);
+
+k8=h*yprime_at(x(i) +h, y(i) +3501*k1/1720 -300*k2/43 +297275*k3/52632 -319*k4/2322 +24068*k5/84065 +3850*k7/26703);
+
+y(i+1)=y(i)+(3*k1/40 +875*k3/2244 +23*k4/72 +264*k5/1955 +125*k7/11592 +43*k8/616);
+x(i+1)=x(i)+gap;
+
+printf('\n %d iterations gives x%d =%f and y%d =%f',i,i+1,x(i+1),i+1,y(i+1));
+end
+
+plot(x,y)
+end

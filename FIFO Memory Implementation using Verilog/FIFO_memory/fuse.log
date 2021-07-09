@@ -1,0 +1,5 @@
+Running: fuse.exe -relaunch -intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "C:/Users/91880/Desktop/DTU/Academics/Programming/Xilinx/FIFO_memory/fifo_isim_beh.exe" -prj "C:/Users/91880/Desktop/DTU/Academics/Programming/Xilinx/FIFO_memory/fifo_beh.prj" "work.fifo" "work.glbl" 
+ISim P.20131013 (signature 0x7708f090)
+Number of CPUs detected in this system: 8
+Turning on mult-threading, number of parallel sub-compilation jobs: 16 
+ERROR:Simulator:796 - Unable to open project file "C:/Users/91880/Desktop/DTU/Academics/Programming/Xilinx/FIFO_memory/fifo_beh.prj"

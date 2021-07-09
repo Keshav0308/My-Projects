@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "C:/Users/91880/Desktop/DTU/Academics/Programming/Xilinx/FIFO_memory/fifo_isim_beh.exe" -prj "C:/Users/91880/Desktop/DTU/Academics/Programming/Xilinx/FIFO_memory/fifo_beh.prj" "work.fifo" "work.glbl" 
